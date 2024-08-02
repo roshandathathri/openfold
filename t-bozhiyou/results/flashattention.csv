@@ -1,0 +1,4 @@
+impls,fw,bw,both
+CUDA-FA2,90.25,64.43,70.16
+Triton-FA2,91.09,51.22,58.54
+PyTorch,13.45,14.52,14.20

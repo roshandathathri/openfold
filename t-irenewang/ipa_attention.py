@@ -556,7 +556,7 @@ attention = _attention.apply
 @pytest.mark.parametrize("causal", [False])
 def test_op(Z, H, N_CTX, HEAD_DIM, P, C_Z, causal, dtype=torch.float32):
     torch.manual_seed(20)
-    print("Z, H, N_CTX, HEAD_DIM", Z, H, N_CTX, HEAD_DIM)
+    print("Z, H, N_CTX, HEAD_DIM, P, C_Z", Z, H, N_CTX, HEAD_DIM, P, C_Z)
     q = (torch.empty((Z, H, N_CTX, HEAD_DIM), dtype=dtype, device="cuda").normal_(mean=0.0, std=0.5).requires_grad_())
     k = (torch.empty((Z, H, N_CTX, HEAD_DIM), dtype=dtype, device="cuda").normal_(mean=0.0, std=0.5).requires_grad_())
     v = (torch.empty((Z, H, N_CTX, HEAD_DIM), dtype=dtype, device="cuda").normal_(mean=0.0, std=0.5).requires_grad_())
@@ -587,7 +587,7 @@ try:
 except BaseException:
     HAS_FLASH = False
 
-BATCH, N_HEADS, HEAD_DIM, P, C_Z = 1, 12, 16, 4, 128
+BATCH, N_HEADS, HEAD_DIM, P, C_Z = 16, 12, 16, 4, 128
 # vary seq length for fixed head and batch=4
 configs = []
 for mode in ["fwd"]:
